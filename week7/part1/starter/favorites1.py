@@ -1,9 +1,5 @@
 # favorites1.py
-# Task: Same as favorites0, but store the language in a variable called 'favorite'
-#       before printing it.
-#
-# Why? Naming values makes code self-documenting.
-#      row[1] tells you nothing. favorite = row[1] tells you exactly what row[1] is.
+# Task: Store the language in a variable to make the code self-documenting.
 
 import csv
 
@@ -11,6 +7,9 @@ with open("favorites.csv", "r") as file:
     reader = csv.reader(file)
     next(reader)
     for row in reader:
-        # TODO: Store row[1] in a variable called 'favorite'
-        # TODO: Print favorite
-        pass
+        # Store row[1] in a variable called 'favorite'
+        # This makes it clear that index 1 represents the user's choice
+        favorite = row[1]
+
+        # Print favorite
+        print(favorite)

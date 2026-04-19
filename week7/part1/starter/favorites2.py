@@ -1,15 +1,14 @@
 # favorites2.py
-# Task: Print every language using csv.DictReader instead of csv.reader
-#
-# Key difference:
-#   csv.reader  → row is a LIST  → access by index: row[1]
-#   DictReader  → row is a DICT → access by name:  row["language"]
-#
-# Bonus: DictReader automatically uses the first row as keys — no need for next()
+# Task: Print every language using csv.DictReader
 
 import csv
 
 with open("favorites.csv", "r") as file:
-    # TODO: Create a csv.DictReader (not csv.reader)
-    # TODO: Loop over rows and print row["language"]
-    pass
+    # Create a csv.DictReader object
+    # This automatically uses the first row of the CSV as keys for the dictionary
+    reader = csv.DictReader(file)
+
+    # Loop over the rows (notice: no next() call is needed!)
+    for row in reader:
+        # Access the data by the column header name
+        print(row["language"])

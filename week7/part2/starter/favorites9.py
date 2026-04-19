@@ -1,30 +1,18 @@
 # favorites9.py
 # Task: Count languages using SQL instead of a Python dictionary.
-#
-# Before running this file, import the CSV into SQLite:
-#   sqlite3 favorites.db
-#   .mode csv
-#   .import ../week1/favorites.csv favorites
-#   .quit
-#
-# The SQL query replaces the entire counting loop from favorites5–8.
-# One query does what 10+ lines of Python did.
-#
-# Expected output:
-#   Python 196
-#   C 40
-#   Scratch 28
 
 from cs50 import SQL
 
-# Open the database
+# Open the database (ensure favorites.db exists in your directory)
 db = SQL("sqlite:///favorites.db")
 
-# TODO: Write a SQL query that:
-#   - SELECTs language and COUNT(*) AS n
-#   - FROM the favorites table
-#   - GROUPs BY language
-#   - ORDERs BY n DESC
-# Store the result in a variable called 'rows'
+# Execute the SQL query
+# 1. COUNT(*) AS n: Counts occurrences and renames the result column to 'n'
+# 2. GROUP BY language: Collapses all identical languages into single rows
+# 3. ORDER BY n DESC: Sorts the resulting counts from highest to lowest
+rows = db.execute("SELECT language, COUNT(*) AS n FROM favorites GROUP BY language ORDER BY n DESC")
 
-# TODO: Loop over rows and print row["language"] and row["n"]
+# Loop over rows and print the results
+# db.execute returns a list of dictionaries, where keys are column names
+for row in rows:
+    print(f"{row['language']} {row['n']}")

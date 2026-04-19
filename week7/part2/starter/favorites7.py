@@ -1,8 +1,5 @@
 # favorites7.py
 # Task: Print language counts sorted ALPHABETICALLY (A → Z)
-#
-# Hint: sorted(counts) returns the keys in alphabetical order.
-#       The dictionary itself is NOT changed.
 
 import csv
 
@@ -16,8 +13,6 @@ with open("../week1/favorites.csv", "r") as file:
         else:
             counts[favorite] = 1
 
-# TODO: Print counts sorted alphabetically by language name
-# Expected output:
-#   C: 40
-#   Python: 196
-#   Scratch: 28
+# sorted(counts) creates a temporary list of keys: ["C", "Python", "Scratch"]
+for favorite in sorted(counts):
+    print(f"{favorite}: {counts[favorite]}")
